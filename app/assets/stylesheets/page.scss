@@ -1,0 +1,15 @@
+// Place all the styles related to the page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//colors
+$black:  black;
+
+table {
+       border: 1px solid $black;
+}
+th {
+       border: 1px solid $black;
+}
+td {
+       border: 1px solid $black;
+}

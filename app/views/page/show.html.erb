@@ -1,0 +1,37 @@
+<h1>Page Details</h1>
+
+<ul>
+	<li>
+		ID : <%= @page['id'] %>		
+	</li>
+	<li>
+		Name : <%= @page['name'] %>		
+	</li>
+	<li>
+		Likes : <%= @page['likes'] %>		
+	</li>
+	<li>
+		Link : <a href="<%= @page['link'] %>"><%= @page['link'] %></a>		
+	</li>
+</ul>
+
+<h2> 
+	Page Feed
+</h2>
+
+<table>
+   <tr>
+      <th>Message</th>
+      <th> Created Time </th>
+   </tr>
+   <% @feed_items.each do |feed_item|%>
+   <tr>
+      <td><%= feed_item['message']%></td>
+      <td><%= feed_item['created_time'].to_datetime.strftime("%D %T") %></td>
+      
+   </tr>
+   <% end %>
+</table>
+
+<a href="/page/new">New Post</a>
+

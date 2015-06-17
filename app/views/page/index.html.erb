@@ -1,0 +1,16 @@
+<h1>Page Manager</h1>
+
+<table>
+   <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Action</th>
+   </tr>
+   <% @pages.each do |page|%>
+   <tr>
+      <td><%= page['name'] %></td>
+      <td><%= page['category'] %></td>
+      <td><a href="/page/<%=page['id']%>">View</a></td>
+   </tr>
+   <% end %>
+</table>
