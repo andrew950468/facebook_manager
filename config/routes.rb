@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   get 'page/index'
+
 
   resources :user
   resources :page

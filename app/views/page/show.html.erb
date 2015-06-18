@@ -33,7 +33,7 @@
    <% end %>
 </table>
 
-<a href="/page/new">New Published Post</a>
+<a href="/page/new?page_id=<%= @page['id'] %>">New Published Post</a>
 
 <h2> 
 	List Unpublished Post
@@ -45,11 +45,13 @@
       <th>Message</th>
       <th> Created Time </th>
    </tr>
-   <% @unpublished_items.each do |unpublished_item|%>
+   <% @unpublished_posts.each do |unpublished_post|%>
    <tr>
       <td><%= 
-          unpublished_item['message'] if unpublished_item['is_hidden'] == true 
+          unpublished_post['message']
           %></td>
+      <td><%= unpublished_post['created_time'].to_datetime.strftime("%D %T") %></td>
+
 
       
    </tr>

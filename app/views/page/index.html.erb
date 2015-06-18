@@ -10,7 +10,12 @@
    <tr>
       <td><%= page['name'] %></td>
       <td><%= page['category'] %></td>
-      <td><a href="/page/<%=page['id']%>">View</a></td>
+      <td>
+         <a href="/page/<%=page['id']%>">View</a>
+         &nbsp;
+         <a href="/page/new?page_id=<%=page['id']%>">Add Post</a>         
+      </td>
    </tr>
    <% end %>
 </table>
+

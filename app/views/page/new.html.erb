@@ -1,7 +1,13 @@
 <form action="/page" method="post">
-	<input name="page_id" type="hidden" value="1631974847020962" />	
+	<input name="page_id" type="hidden" value="<%= @page_id %>" />	
 	<label for="message">Message:</label>
   	<input id="message" type="text" name="message">
+
+   <select name="publish_status">
+	   <option value="published">Published</option>
+	   <option value="unpublished">Unpublished</option>
+   </select>
+
   	<input type="submit" value="Submit">
 </form>
 
