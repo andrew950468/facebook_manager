@@ -25,9 +25,10 @@ class PageController < ApplicationController
     @page = @page_graph.get_object("me")
   	@feed_items = @page_graph.get_connection('me', 'feed') 
     @posts = @page_graph.get_connection('me', 'promotable_posts')
+   # @insights = @page_graph.get_connection('me', 'post')
     @unpublished_posts = @posts.select{|x| x['is_hidden'] == true}
 
-    @page_insight = @page_graph.get_connections(params[:id], 'insights', period: 'week')
+    @page_insight = @page_graph.get_connections(params[:id], 'insights', period: 'day')
     #puts "page insights: #{@page_insight.inspect}"
   end
 

@@ -1,62 +1,90 @@
+<table class = "table">
+
 <h1>Page Details</h1>
+<ul class="list-group">
+   <li class="list-group-item">Link:  <a href="<%= @page['link'] %>"><%= @page['link'] %> </li>
+  <li class="list-group-item">Name:  <%= @page['name'] %>  ,   Category: <%= @page['category'] %>  ,  ID:  <%= @page['id'] %></li>
+  <li class="list-group-item">Insights:  <%= @page['about'] %></li>
+  
+  <li class="list-group-item">Analytics:   Likes:<%= @page['likes'] %> , Checkins: <%= @page['checkins'] %> 
+     ,  Unseen Message: <%= @page['unseen_message_count']%> , Unread Message,<%= @page['unread_message_count']%>,
+      ,  Talking about: <%= @page['talking_about_count']%>  
+      , Unread Notif: <%= @page['unread_notif_count']%> 
+      </li>
+  
 
-<ul>
-	<li>
-		ID : <%= @page['id'] %>		
-	</li>
-	<li>
-		Name : <%= @page['name'] %>		
-	</li>
-	<li>
-		Likes : <%= @page['likes'] %>		
-	</li>
-	<li>
-		Link : <a href="<%= @page['link'] %>"><%= @page['link'] %></a>		
-	</li>
-</ul>
+  
+  
 
-<h2> 
-	List Page Feed
-</h2>
+   </ul>
 
-<table>
-   <tr>
-      <th>Message</th>
-      <th> Created Time </th>
-   </tr>
-   <% @feed_items.each do |feed_item|%>
-   <tr>
-      <td><%= feed_item['message']%></td>
-      <td><%= feed_item['created_time'].to_datetime.strftime("%D %T") %></td>
-      
-   </tr>
-   <% end %>
+   
+
 </table>
 
-<a href="/page/new?page_id=<%= @page['id'] %>">New Published Post</a>
+  
 
-<h2> 
-	List Unpublished Post
-</h2>
+   <h2> 
+	      List of Unpublished Posts
+         <%= @page['insights'] %>
+   </h2>
 
 
-<table>
-   <tr>
-      <th>Message</th>
-      <th> Created Time </th>
-   </tr>
-   <% @unpublished_posts.each do |unpublished_post|%>
-   <tr>
-      <td><%= 
-          unpublished_post['message']
-          %></td>
-      <td><%= unpublished_post['created_time'].to_datetime.strftime("%D %T") %></td>
+   <table class="table table-hover">
+      <tr>
+         <th>Message</th>
+         <th> Created Time </th>
+         <th> View </th>
+      </tr>
+      <% @unpublished_posts.each do |unpublished_post|%>
+      <tr>
+         <td><%= 
+                  unpublished_post['message']
+            %></td>
+         <td><%= unpublished_post['created_time'].to_datetime.strftime("%D %T") %></td>
+         <td><%= id = unpublished_post['id']
+            x = @page_graph.get_connection(id, 'insights/post_impressions_unique')
+            x[0]['values'][0]['value']%></td>
 
 
       
-   </tr>
-   <% end %>
-</table>
+      </tr>
+      <% end %>
+   </table>
+
+
+   
+   <h2> 
+        List of Page Feeds
+   </h2>
+      <table class="table table-hover">
+      <tr>
+         <th>Message</th>
+         <th> Created Time </th>
+         <th> View </th>
+      </tr>
+      <% @feed_items.each do |feed_item|%>
+      <tr>
+         <td><%= 
+            feed_item['message']
+            %></td>
+         <td><%= feed_item['created_time'].to_datetime.strftime("%D %T") %></td>
+         <td><%= id = feed_item['id']
+            x = @page_graph.get_connection(id, 'insights/post_impressions_unique')
+            x[0]['values'][0]['value']%></td>
+
+
+      
+      </tr>
+
+
+      
+      </tr>
+      <% end %>
+   </table>
+
+
+
 
 
 

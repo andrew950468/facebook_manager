@@ -5,7 +5,9 @@
 $black:  black;
 
 table {
+	   margin: 10pt;
        border: 1px solid $black;
+       padding: -10pt;
 }
 th {
        border: 1px solid $black;
